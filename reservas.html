@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria Bella - Reservas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="imagens/logo.png" alt="Universo Mágico" class="logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cardapio.html">Cardápio</a></li>
+                <li><a href="reservas.html" class="active">Reservas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="reservas">
+            <div class="container">
+                <h1>Faça sua Reserva</h1>
+                <p>Garanta seu lugar em nossa pizzaria!</p>
+                
+                <form class="form-reserva" id="formReserva">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo *</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefone">Telefone *</label>
+                        <input type="tel" id="telefone" name="telefone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="data">Data da Reserva *</label>
+                        <input type="date" id="data" name="data" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hora">Horário *</label>
+                        <input type="time" id="hora" name="hora" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lugares">Quantidade de Lugares *</label>
+                        <select id="lugares" name="lugares" required>
+                            <option value="">Selecione...</option>
+                            <option value="1">1 pessoa</option>
+                            <option value="2">2 pessoas</option>
+                            <option value="3">3 pessoas</option>
+                            <option value="4">4 pessoas</option>
+                            <option value="5">5 pessoas</option>
+                            <option value="6">6 pessoas</option>
+                            <option value="7">7 pessoas</option>
+                            <option value="8">8 pessoas</option>
+                            <option value="9+">9 ou mais pessoas</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group radio-group">
+                        <label>É aniversário?</label>
+                        <div class="radio-options">
+                            <label>
+                                <input type="radio" name="aniversario" value="sim"> Sim
+                            </label>
+                            <label>
+                                <input type="radio" name="aniversario" value="nao" checked> Não
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group radio-group">
+                        <label>Perto da área kids?</label>
+                        <div class="radio-options">
+                            <label>
+                                <input type="radio" name="kids" value="sim"> Sim
+                            </label>
+                            <label>
+                                <input type="radio" name="kids" value="nao" checked> Não
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="observacoes">Observações</label>
+                        <textarea id="observacoes" name="observacoes" rows="4" placeholder="Alguma observação especial..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-reservar">Confirmar Reserva</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Pizzaria Universo Mágico. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

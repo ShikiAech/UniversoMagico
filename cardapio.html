@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universo Mágico - Cardápio</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .rodizio-banner {
+            background: linear-gradient(135deg, #d32f2f, #f44336);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .rodizio-banner h2 {
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .rodizio-banner p {
+            font-size: 1.2rem;
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        .cardapio {
+            padding: 2rem 0;
+            background: white;
+        }
+
+        .cardapio h1 {
+            text-align: center;
+            color: #d32f2f;
+            margin-bottom: 1rem;
+            font-size: 3rem;
+        }
+
+        .cardapio-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.2rem;
+        }
+
+        .filtros {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filtro-btn {
+            background: #f8f9fa;
+            border: 2px solid #d32f2f;
+            color: #d32f2f;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .filtro-btn.active,
+        .filtro-btn:hover {
+            background: #d32f2f;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
+        }
+
+        .categoria {
+            display: none;
+            margin-bottom: 4rem;
+        }
+
+        .categoria.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .categoria h2 {
+            color: #d32f2f;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 2.5rem;
+            border-bottom: 3px solid #d32f2f;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+            margin-left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .itens-cardapio {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        }
+
+        .item-cardapio {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 6px solid #d32f2f;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .item-cardapio:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .item-info h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            text-align: center;
+        }
+
+        .ingredientes {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+            text-align: center;
+            margin: 0;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .cardapio h1 {
+                font-size: 2.5rem;
+            }
+            
+            .rodizio-banner h2 {
+                font-size: 2rem;
+            }
+            
+            .filtro-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .itens-cardapio {
+                grid-template-columns: 1fr;
+            }
+            
+            .categoria h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cardapio h1 {
+                font-size: 2rem;
+            }
+            
+            .rodizio-banner {
+                padding: 1.5rem;
+            }
+            
+            .rodizio-banner h2 {
+                font-size: 1.8rem;
+            }
+            
+            .filtros {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filtro-btn {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="imagens/logo.png" alt="Universo Mágico" class="logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cardapio.html" class="active">Cardápio</a></li>
+                <li><a href="reservas.html">Reservas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="cardapio">
+            <div class="container">
+                <!-- Banner do Rodízio -->
+                <div class="rodizio-banner">
+                    <h2>🎉 RODÍZIO COMPLETO</h2>
+                    <p>Todas as pizzas inclusas - Saboreie à vontade!</p>
+                </div>
+
+                <h1>Nosso Cardápio</h1>
+                <p class="cardapio-subtitle">Escolha sua categoria preferida</p>
+                
+                <!-- Botões de Filtro -->
+                <div class="filtros">
+                    <button class="filtro-btn active" data-categoria="salgadas">🍕 Pizzas Salgadas</button>
+                    <button class="filtro-btn" data-categoria="doces">🍰 Pizzas Doces</button>
+                    <button class="filtro-btn" data-categoria="outros">🍝 Outros Pratos</button>
+                </div>
+
+                <!-- Pizzas Salgadas -->
+                <div class="categoria active" id="salgadas">
+                    <h2>🍕 Pizzas Salgadas</h2>
+                    <div class="itens-cardapio">
+                        <div class="item-cardapio">
+                            <div class="item-info">
+                                <h3>Margherita</h3>
+                                <p class="ingredientes">Molho de tomate, mussarela, tomate fresco, manjericão e azeite de oliva</p>
+                            </div>
+                        </div>
+                        
+                        <div class="item-cardapio">
+                            <div class="item-info">
+                                <h3>Calabresa</h3>
+                                <p class="ingredientes">Molho de tomate, mussarela, calabresa fatiada e orégano</p>
+                            </div>
+                        </div>
+                        
+                        <div class="item-cardapio">
+                            <div class="item-info">
+                                <h3>Quatro Queijos</h3>
+                                <p class="ingredientes">Mussarela, provolone, parmesão, gorgonzola e catupiry original</p>
+                            </div>
+                        </div>
+                        
+                        <div class="item-cardapio">
+                            <div class="item-info">
+                                <h3>Portuguesa</h3>
+                                <p class="ingredientes">Mussarela, presunto, ovos, cebola e azeitonasp>
+                            </div>
+                        </div>
+
+                        <div class="item-cardapio">
+                            <div class="item-info">
+                                <h3>Frango com Catupiry</h3>
+                                <p class="ingredientes">Frango desfiado temperado, catupiry cremoso e mussarela</p>
+                            </div>
+                        </div>
+
+                        <div class="item-cardapio">
+                            <div class="item-info">
+                                <h3>Pepperoni</h3>
+                                <p class="ingredientes">Mussarela, pepperoni e molho de tomate especial</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pizzas Doces -->
+                <div class="categoria" id="doces">
+                    <h2>🍰 Pizzas Doces</h2>
+                    <div class="itens-cardapio">
+                        <div class="item-cardapio">
+                            <div class="item-info">
+                                <h3>Sensação</h3>
+                                <p class="ingredientes">Chocolate ao leite, morango e leite condensado</p>
+                            </div>
+                        </div>
+                        
+                        <div class="item-cardapio">
+                            <div class="item-info">
+                                <h3>Banana com Chocolate</h3>
+                                <p class="ingredientes">Banana, canela em pó e chocolate ao leite</p>
+                            </div>
+                        </div>
+                        
+                        <div class="item-cardapio">
+                            <div class="item-info">
+                                <h3>Divina</h3>
+                                <p class="ingredientes">Chocolate branco, abacaxi e coco ralado</p>
+                            </div>
+                        </div>
+
+                        <div class="item-cardapio">
+                            <div class="item-info">
+                                <h3>Prestígio</h3>
+                                <p class="ingredientes">Chocolate, coco ralado e leite condensado</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Outros Pratos -->
+                <div class="categoria" id="outros">
+                    <h2>🍝 Outros Pratos</h2>
+                    <div class="itens-cardapio">
+                        <div class="item-cardapio">
+                            <div class="item-info">
+                                <h3>Lasanha à Bolonhesa</h3>
+                                <p class="ingredientes">Molho de tomate, bolonhesa, molho branco e queijo mussarela</p>
+                            </div>
+                        </div>
+                        
+                        <div class="item-cardapio">
+                            <div class="item-info">
+                                <h3>Risotto à Piamontese</h3>
+                                <p class="ingredientes">Arroz branco, cogumelos, parmesão e vinho branco</p>
+                            </div>
+                        </div>
+                        
+                        <div class="item-cardapio">
+                            <div class="item-info">
+                                <h3>Espaguetti Ao Alho e Óleo</h3>
+                                <p class="ingredientes">Espaguetti, alho frito e azeite</p>
+                            </div>
+                        </div>
+
+                        <div class="item-cardapio">
+                            <div class="item-info">
+                                <h3>Penne ao Cheddar com Carne Seca</h3>
+                                <p class="ingredientes">Massa penne, molho cheddar e carne seca</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Universo Mágico Pizzaria. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Controle do cardápio (filtros)
+        document.addEventListener('DOMContentLoaded', function() {
+            const filtroBtns = document.querySelectorAll('.filtro-btn');
+            const categorias = document.querySelectorAll('.categoria');
+            
+            filtroBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove classe active de todos os botões
+                    filtroBtns.forEach(b => b.classList.remove('active'));
+                    // Adiciona classe active ao botão clicado
+                    this.classList.add('active');
+                    
+                    // Esconde todas as categorias
+                    categorias.forEach(cat => cat.classList.remove('active'));
+                    
+                    // Mostra a categoria correspondente
+                    const categoriaId = this.getAttribute('data-categoria');
+                    const categoriaAlvo = document.getElementById(categoriaId);
+                    if (categoriaAlvo) {
+                        categoriaAlvo.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
